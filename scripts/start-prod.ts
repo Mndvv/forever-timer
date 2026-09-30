@@ -25,20 +25,24 @@ if (missing) {
 
 console.log("🚀 Starting Production Servers concurrently...\n");
 
-const backendProcess = spawn("bun", ["run", "backend/dist/server.js"], {
+const bunBin = process.execPath;
+
+const backendProcess = spawn(bunBin, ["run", "backend/dist/server.js"], {
   stdio: "inherit",
+  shell: true,
   env: { ...process.env },
 });
 
-const frontendProcess = spawn("bun", ["run", "frontend/.output/server/index.mjs"], {
+const frontendProcess = spawn("node", [frontendDist], {
   stdio: "inherit",
-  env: { ...process.env, PORT: process.env.PORT || "3000" },
+  shell: true,
+  env: { ...process.env },
 });
 
 function cleanup() {
   console.log("\n🛑 Stopping servers...");
-  backendProcess.kill("SIGTERM");
-  frontendProcess.kill("SIGTERM");
+  try { backendProcess.kill(); } catch {}
+  try { frontendProcess.kill(); } catch {}
   process.exit(0);
 }
 
