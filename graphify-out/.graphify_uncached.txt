@@ -1,0 +1,5 @@
+C:\Users\Stark\Documents\forevertimer\AGENTS.md
+C:\Users\Stark\Documents\forevertimer\README.md
+C:\Users\Stark\Documents\forevertimer\backend\README.md
+C:\Users\Stark\Documents\forevertimer\frontend\README.md
+C:\Users\Stark\Documents\forevertimer\frontend\public\robots.txt

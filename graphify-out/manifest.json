@@ -1,0 +1,146 @@
+{
+  "backend/main.ts": {
+    "mtime": 1790703556.8209875,
+    "seen": 1790803319.676191,
+    "ast_hash": "56b0cb42d93c05671c08664b37c39e32",
+    "semantic_hash": ""
+  },
+  "backend/package.json": {
+    "mtime": 1790703969.5482256,
+    "seen": 1790803319.676196,
+    "ast_hash": "0afea09b0d35a060e7d90eaf9cc8c7af",
+    "semantic_hash": ""
+  },
+  "backend/src/index.ts": {
+    "mtime": 1790755494.635568,
+    "seen": 1790803319.6761982,
+    "ast_hash": "188fee6c060cbbc7cc581d997058ba56",
+    "semantic_hash": ""
+  },
+  "backend/tsconfig.json": {
+    "mtime": 1790703556.7923977,
+    "seen": 1790803319.6761997,
+    "ast_hash": "3f3977772cb744aee7c16098cac63b81",
+    "semantic_hash": ""
+  },
+  "frontend/app/app.vue": {
+    "mtime": 1790704035.4502683,
+    "seen": 1790803319.6762009,
+    "ast_hash": "86f4d8710a850093161cb59fe80dd015",
+    "semantic_hash": ""
+  },
+  "frontend/app/composables/useTimerSocket.ts": {
+    "mtime": 1790755301.3763566,
+    "seen": 1790803319.676202,
+    "ast_hash": "f3040134b85c6585fd349a3e1c6b8757",
+    "semantic_hash": ""
+  },
+  "frontend/app/pages/controller.vue": {
+    "mtime": 1790704076.8605423,
+    "seen": 1790803319.6762033,
+    "ast_hash": "b2b28764a9ef898bb90552b9e0d74b99",
+    "semantic_hash": ""
+  },
+  "frontend/app/pages/index.vue": {
+    "mtime": 1790802194.7374785,
+    "seen": 1790803319.6762042,
+    "ast_hash": "d9b5262ec016e158ac6b321686427af4",
+    "semantic_hash": ""
+  },
+  "frontend/app/pages/overlay.vue": {
+    "mtime": 1790803173.1312602,
+    "seen": 1790803319.6762059,
+    "ast_hash": "58cf74a1a44463a6d1a2713d6cb01f7d",
+    "semantic_hash": ""
+  },
+  "frontend/app/utils/presetZip.client.ts": {
+    "mtime": 1790802185.4557726,
+    "seen": 1790803319.6762066,
+    "ast_hash": "417e19190664f1d75fa17e2e34a3ac10",
+    "semantic_hash": ""
+  },
+  "frontend/app/utils/soundEngine.ts": {
+    "mtime": 1790802977.0557616,
+    "seen": 1790803319.6762078,
+    "ast_hash": "0c866edcb1c0b2581f2c9bd4b267b842",
+    "semantic_hash": ""
+  },
+  "frontend/eslint.config.mjs": {
+    "mtime": 1790703513.2516036,
+    "seen": 1790803319.676209,
+    "ast_hash": "9ae8ff4755aafd01ece111a6d3086d32",
+    "semantic_hash": ""
+  },
+  "frontend/nuxt.config.ts": {
+    "mtime": 1790802177.178145,
+    "seen": 1790803319.67621,
+    "ast_hash": "48bbe86d8b834d9916f7f42c02f27f93",
+    "semantic_hash": ""
+  },
+  "frontend/package.json": {
+    "mtime": 1790802083.4571855,
+    "seen": 1790803319.676211,
+    "ast_hash": "ae66d9dbdaf0b185d5c6bf857745bb87",
+    "semantic_hash": ""
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1789977793.0,
+    "seen": 1790803319.6762123,
+    "ast_hash": "99d8d7543e8bac462160e11d33e5146e",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1790704209.6438236,
+    "seen": 1790803319.6762137,
+    "ast_hash": "80587cc8a1c4c38f507a7bdfcf00085b",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1790703709.1071997,
+    "seen": 1790803319.6762147,
+    "ast_hash": "c5f1a5f06a9147d07cbd5d71f4c0200d",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1790704248.6599824,
+    "seen": 1790803319.676216,
+    "ast_hash": "2101e469e3485b850864bc1d7ba4e488",
+    "semantic_hash": ""
+  },
+  "backend/README.md": {
+    "mtime": 1790703578.1602187,
+    "seen": 1790803319.6762168,
+    "ast_hash": "af3860cf29a57ccc6e7b99bf5d1774aa",
+    "semantic_hash": ""
+  },
+  "frontend/README.md": {
+    "mtime": 1789977793.0,
+    "seen": 1790803319.6762178,
+    "ast_hash": "884261092c8d74ec62c5c0860a38bc9d",
+    "semantic_hash": ""
+  },
+  "frontend/public/robots.txt": {
+    "mtime": 1789977793.0,
+    "seen": 1790803319.676219,
+    "ast_hash": "243b03ecba82dde9612cd5163145a86d",
+    "semantic_hash": ""
+  },
+  "frontend/public/sounds/end.mp3": {
+    "mtime": 1790705112.023086,
+    "seen": 1790803319.67622,
+    "ast_hash": "87a04e589ecb0e0644ed3a78a9f09de8",
+    "semantic_hash": ""
+  },
+  "frontend/public/sounds/start.mp3": {
+    "mtime": 1790705112.020987,
+    "seen": 1790803319.6762214,
+    "ast_hash": "c5d62aede85e356c020b39e4eb156373",
+    "semantic_hash": ""
+  },
+  "frontend/public/sounds/tick.mp3": {
+    "mtime": 1790705112.0241432,
+    "seen": 1790803319.6762228,
+    "ast_hash": "b60e1048f1290bf0dbdb62c539e1f710",
+    "semantic_hash": ""
+  }
+}

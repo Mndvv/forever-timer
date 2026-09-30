@@ -1,0 +1,22 @@
+{
+  "0": "index.vue",
+  "1": "index.ts",
+  "2": "frontend/package.json",
+  "3": "useTimerSocket",
+  "4": "dependencies",
+  "5": "useTimerSocket.ts",
+  "6": "overlay.vue",
+  "7": "backend/package.json",
+  "8": "compilerOptions",
+  "9": "OBS Debate Timer Project - AI Agent Instructions",
+  "10": "scripts",
+  "11": "⏱️ Forever Timer",
+  "12": "Nuxt Minimal Starter",
+  "13": "setTime",
+  "14": "emitConfigUpdate",
+  "15": "backend/README.md",
+  "16": "frontend/tsconfig.json",
+  "17": "eslint.config.mjs",
+  "18": "app.vue",
+  "19": "nuxt.config.ts"
+}
