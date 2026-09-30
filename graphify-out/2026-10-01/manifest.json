@@ -6,15 +6,15 @@
     "semantic_hash": ""
   },
   "backend/package.json": {
-    "mtime": 1790804149.7582076,
-    "seen": 1790804945.3277707,
-    "ast_hash": "d1c52b5019cf0a183e5315e7bd76ec09",
+    "mtime": 1790703969.5482256,
+    "seen": 1790803319.676196,
+    "ast_hash": "0afea09b0d35a060e7d90eaf9cc8c7af",
     "semantic_hash": ""
   },
   "backend/src/index.ts": {
-    "mtime": 1790804872.5398405,
-    "seen": 1790804945.327773,
-    "ast_hash": "866476fc7284e50cc580bf025cdc374b",
+    "mtime": 1790755494.635568,
+    "seen": 1790803319.6761982,
+    "ast_hash": "188fee6c060cbbc7cc581d997058ba56",
     "semantic_hash": ""
   },
   "backend/tsconfig.json": {
@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "frontend/app/composables/useTimerSocket.ts": {
-    "mtime": 1790804892.9899402,
-    "seen": 1790804945.3277786,
-    "ast_hash": "e398367b1a601c20a07911c78d8ad5a8",
+    "mtime": 1790755301.3763566,
+    "seen": 1790803319.676202,
+    "ast_hash": "f3040134b85c6585fd349a3e1c6b8757",
     "semantic_hash": ""
   },
   "frontend/app/pages/controller.vue": {
@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "frontend/app/pages/index.vue": {
-    "mtime": 1790804913.266608,
-    "seen": 1790804945.3277814,
-    "ast_hash": "9641392bf07c1ab8542b23d366bb96d3",
+    "mtime": 1790802194.7374785,
+    "seen": 1790803319.6762042,
+    "ast_hash": "d9b5262ec016e158ac6b321686427af4",
     "semantic_hash": ""
   },
   "frontend/app/pages/overlay.vue": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "frontend/nuxt.config.ts": {
-    "mtime": 1790804459.9379792,
-    "seen": 1790804945.327788,
-    "ast_hash": "f6f5b7f6697bd05e27a516dc601bcb8b",
+    "mtime": 1790802177.178145,
+    "seen": 1790803319.67621,
+    "ast_hash": "48bbe86d8b834d9916f7f42c02f27f93",
     "semantic_hash": ""
   },
   "frontend/package.json": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1790804162.7336628,
-    "seen": 1790804945.3277917,
-    "ast_hash": "9812d7d9cb15c6c3d2addb0137c16e69",
+    "mtime": 1790704209.6438236,
+    "seen": 1790803319.6762137,
+    "ast_hash": "80587cc8a1c4c38f507a7bdfcf00085b",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -141,12 +141,6 @@
     "mtime": 1790705112.0241432,
     "seen": 1790803319.6762228,
     "ast_hash": "b60e1048f1290bf0dbdb62c539e1f710",
-    "semantic_hash": ""
-  },
-  "scripts/start-prod.ts": {
-    "mtime": 1790804465.7741172,
-    "seen": 1790804945.327793,
-    "ast_hash": "7c3f18c0f5ac4aac39ab98e79f76ede1",
     "semantic_hash": ""
   }
 }

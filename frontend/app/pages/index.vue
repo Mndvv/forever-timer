@@ -1231,6 +1231,7 @@ const {
   prevTimer,
   addTimer,
   deleteTimer,
+  setTimers,
   updateConfig,
   savePreset,
   loadPreset,
@@ -1423,7 +1424,14 @@ function handleDeletePreset(id: string) {
 import { exportPresetZip, importPresetZip } from '../utils/presetZip.client'
 
 function exportPresetJson() {
-  const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localConfig.value, null, 2))
+  const bundle = {
+    version: '1.0',
+    exportedAt: new Date().toISOString(),
+    presetName: newPresetName.value.trim() || 'Timer Preset Bundle',
+    config: localConfig.value,
+    timers: timers.value
+  }
+  const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(bundle, null, 2))
   const downloadAnchor = document.createElement('a')
   downloadAnchor.setAttribute('href', dataStr)
   downloadAnchor.setAttribute('download', `timer-preset-${Date.now()}.json`)
@@ -1450,9 +1458,12 @@ async function handlePresetFileChange(e: Event) {
 
   if (file.name.toLowerCase().endsWith('.zip')) {
     try {
-      const { config: importedConfig } = await importPresetZip(file)
+      const { config: importedConfig, timers: importedTimers } = await importPresetZip(file)
       updateConfig(importedConfig)
-      alert('Preset ZIP with custom audio loaded successfully!')
+      if (importedTimers && importedTimers.length > 0) {
+        setTimers(importedTimers)
+      }
+      alert('Preset ZIP with custom audio and timers loaded successfully!')
     } catch (err: any) {
       alert('Error importing ZIP bundle: ' + (err?.message || err))
     }
@@ -1462,8 +1473,13 @@ async function handlePresetFileChange(e: Event) {
       try {
         const imported = JSON.parse(evt.target?.result as string)
         if (imported && typeof imported === 'object') {
-          updateConfig(imported)
-          alert('Preset JSON imported!')
+          const importedConfig = imported.config || imported
+          const importedTimers = imported.timers
+          updateConfig(importedConfig)
+          if (Array.isArray(importedTimers) && importedTimers.length > 0) {
+            setTimers(importedTimers)
+          }
+          alert('Preset JSON loaded successfully!')
         }
       } catch {
         alert('Invalid preset JSON file')

@@ -18,6 +18,5 @@
   "16": "frontend/tsconfig.json",
   "17": "eslint.config.mjs",
   "18": "app.vue",
-  "19": "nuxt.config.ts",
-  "20": "start-prod.ts"
+  "19": "nuxt.config.ts"
 }

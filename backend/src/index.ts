@@ -338,6 +338,15 @@ function prevTimer() {
   broadcast()
 }
 
+function setTimers(newTimers: TimerItem[]) {
+  if (!Array.isArray(newTimers) || newTimers.length === 0) return
+  timers = JSON.parse(JSON.stringify(newTimers))
+  if (!timers.some(t => t.id === activeTimerId)) {
+    activeTimerId = timers[0]!.id
+  }
+  broadcast()
+}
+
 function addTimer(data: { title?: string; speakerName?: string; duration?: number }) {
   const dur = Math.max(1, Math.floor(data.duration || 300))
   const newTimer: TimerItem = {
@@ -565,6 +574,11 @@ const app = new Elysia()
           break
         case 'PREV_TIMER':
           prevTimer()
+          break
+        case 'SET_TIMERS':
+          if (Array.isArray(data.timers)) {
+            setTimers(data.timers)
+          }
           break
         case 'ADD_TIMER':
           addTimer(data)

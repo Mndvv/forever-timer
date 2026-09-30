@@ -288,6 +288,10 @@ export function useTimerSocket() {
     send({ type: 'DELETE_TIMER', id })
   }
 
+  function setTimers(newTimers: TimerItem[]) {
+    send({ type: 'SET_TIMERS', timers: newTimers })
+  }
+
   function updateConfig(newConfig: Partial<TimerConfig>) {
     send({ type: 'UPDATE_CONFIG', config: newConfig })
   }
@@ -475,6 +479,7 @@ export function useTimerSocket() {
     addTimer,
     updateTimer,
     deleteTimer,
+    setTimers,
     updateConfig,
     savePreset,
     loadPreset,
