@@ -1,0 +1,14 @@
+{
+  "name": "forever-timer-monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "bun --filter \"*\" dev",
+    "dev:backend": "bun --filter forever-timer-backend dev",
+    "dev:frontend": "bun --filter frontend dev",
+    "build:frontend": "bun --filter frontend build"
+  }
+}

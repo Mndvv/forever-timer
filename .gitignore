@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+.output
+.nuxt
+
+# Ignore agentic files
+.agents
