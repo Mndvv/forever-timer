@@ -641,24 +641,33 @@
                   </div>
                 </div>
 
-                <!-- Export & Import Preset JSON -->
-                <div class="flex items-center gap-2 pt-1 border-t border-zinc-800/80">
+                <!-- Export & Import Preset JSON / ZIP -->
+                <div class="flex items-center gap-1.5 pt-1 border-t border-zinc-800/80 flex-wrap">
                   <button
-                    class="flex-1 py-1.5 px-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl text-[11px] cursor-pointer text-center"
-                    @click="exportPresetJson"
+                    class="flex-1 py-1.5 px-2 bg-emerald-700/90 hover:bg-emerald-600 text-zinc-950 font-bold rounded-xl text-[11px] cursor-pointer text-center flex items-center justify-center gap-1 transition-all active:scale-95 shadow shrink-0"
+                    @click="exportPresetZipFile"
+                    title="Export full configuration + custom uploaded audio as a ZIP file"
                   >
-                    📥 Export JSON
+                    <span>📦 Export ZIP (With Audio)</span>
                   </button>
                   <button
-                    class="flex-1 py-1.5 px-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl text-[11px] cursor-pointer text-center"
-                    @click="triggerImportPreset"
+                    class="py-1.5 px-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl text-[11px] cursor-pointer text-center"
+                    @click="exportPresetJson"
+                    title="Export JSON text file"
                   >
-                    📤 Import JSON
+                    <span>📥 JSON</span>
+                  </button>
+                  <button
+                    class="py-1.5 px-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl text-[11px] cursor-pointer text-center"
+                    @click="triggerImportPreset"
+                    title="Import JSON or ZIP preset bundle"
+                  >
+                    <span>📤 Import</span>
                   </button>
                   <input
                     ref="presetFileInput"
                     type="file"
-                    accept=".json"
+                    accept=".json,.zip"
                     class="hidden"
                     @change="handlePresetFileChange"
                   />
@@ -1411,6 +1420,8 @@ function handleDeletePreset(id: string) {
   if (selectedPresetId.value === id) selectedPresetId.value = ''
 }
 
+import { exportPresetZip, importPresetZip } from '../utils/presetZip'
+
 function exportPresetJson() {
   const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localConfig.value, null, 2))
   const downloadAnchor = document.createElement('a')
@@ -1421,25 +1432,45 @@ function exportPresetJson() {
   downloadAnchor.remove()
 }
 
+async function exportPresetZipFile() {
+  try {
+    await exportPresetZip(localConfig.value, timers.value, newPresetName.value.trim() || 'Timer Preset Bundle')
+  } catch (err: any) {
+    alert('Failed to export ZIP bundle: ' + (err?.message || err))
+  }
+}
+
 function triggerImportPreset() {
   presetFileInput.value?.click()
 }
 
-function handlePresetFileChange(e: Event) {
+async function handlePresetFileChange(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
-  const reader = new FileReader()
-  reader.onload = (evt) => {
+
+  if (file.name.toLowerCase().endsWith('.zip')) {
     try {
-      const imported = JSON.parse(evt.target?.result as string)
-      if (imported && typeof imported === 'object') {
-        updateConfig(imported)
-      }
-    } catch {
-      alert('Invalid preset JSON file')
+      const { config: importedConfig } = await importPresetZip(file)
+      updateConfig(importedConfig)
+      alert('Preset ZIP with custom audio loaded successfully!')
+    } catch (err: any) {
+      alert('Error importing ZIP bundle: ' + (err?.message || err))
     }
+  } else {
+    const reader = new FileReader()
+    reader.onload = (evt) => {
+      try {
+        const imported = JSON.parse(evt.target?.result as string)
+        if (imported && typeof imported === 'object') {
+          updateConfig(imported)
+          alert('Preset JSON imported!')
+        }
+      } catch {
+        alert('Invalid preset JSON file')
+      }
+    }
+    reader.readAsText(file)
   }
-  reader.readAsText(file)
 }
 
 function triggerAudioUpload() {

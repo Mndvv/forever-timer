@@ -3,6 +3,7 @@ node_modules/
 *.log
 .output
 .nuxt
+/bun.lock
 
 # Ignore agentic files
 .agents
