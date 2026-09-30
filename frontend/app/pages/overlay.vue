@@ -131,21 +131,21 @@ watch(timeRemaining, (newTime) => {
 
   const customSoundsList = config.value.customSounds || config.value.sound?.customSounds || []
 
-  // 1. Check if an active rule specifies soundEverySecond
-  if (
-    activeRule.value &&
-    activeRule.value.soundEverySecond &&
-    activeRule.value.sound &&
-    activeRule.value.sound !== 'none'
-  ) {
-    playCustomSound(activeRule.value.sound, config.value.sound.volume, customSoundsList)
+  // 1. Check if an active rule specifies soundEverySecond OR uses 'tick' sound (tick = repeat every second)
+  if (activeRule.value && activeRule.value.sound && activeRule.value.sound !== 'none') {
+    const isTickSound = activeRule.value.sound === 'tick' || activeRule.value.sound === config.value.sound.tickSound
+    if (activeRule.value.soundEverySecond || isTickSound) {
+      playCustomSound(activeRule.value.sound, config.value.sound.volume, customSoundsList)
+    }
   }
 
-  // 2. Check if any alert rule was newly triggered on this second tick
+  // 2. Check if any alert rule was newly triggered on this second tick (one-shot on crossing)
   if (config.value.rules && Array.isArray(config.value.rules)) {
     for (const rule of config.value.rules) {
       if (oldTime > rule.triggerAt && newTime <= rule.triggerAt) {
-        if (rule.sound && rule.sound !== 'none' && !rule.soundEverySecond) {
+        const isTickSound = rule.sound === 'tick' || rule.sound === config.value.sound.tickSound
+        // Only play one-shot if NOT a repeating tick sound (those are handled in step 1 every second)
+        if (rule.sound && rule.sound !== 'none' && !rule.soundEverySecond && !isTickSound) {
           playCustomSound(rule.sound, config.value.sound.volume, customSoundsList)
         }
       }
@@ -160,12 +160,12 @@ watch(timeRemaining, (newTime) => {
     return
   }
 
-  // 4. Tick sound countdown
+  // 4. Tick sound countdown (global tickUnderXSeconds range, no active rule overriding)
   if (
     newTime < oldTime &&
     newTime > 0 &&
     newTime <= config.value.sound.tickUnderXSeconds &&
-    (!activeRule.value || !activeRule.value.soundEverySecond)
+    (!activeRule.value || (!activeRule.value.soundEverySecond && activeRule.value.sound !== 'tick' && activeRule.value.sound !== config.value.sound.tickSound))
   ) {
     if (config.value.sound.tickSound && config.value.sound.tickSound !== 'none') {
       playCustomSound(config.value.sound.tickSound, config.value.sound.volume, customSoundsList)
