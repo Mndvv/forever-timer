@@ -1420,7 +1420,7 @@ function handleDeletePreset(id: string) {
   if (selectedPresetId.value === id) selectedPresetId.value = ''
 }
 
-import { exportPresetZip, importPresetZip } from '../utils/presetZip'
+import { exportPresetZip, importPresetZip } from '../utils/presetZip.client'
 
 function exportPresetJson() {
   const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localConfig.value, null, 2))
