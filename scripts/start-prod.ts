@@ -30,13 +30,13 @@ const bunBin = process.execPath;
 const backendProcess = spawn(bunBin, ["run", "backend/dist/server.js"], {
   stdio: "inherit",
   shell: true,
-  env: { ...process.env },
+  env: { ...process.env, NODE_ENV: "production" },
 });
 
 const frontendProcess = spawn("node", [frontendDist], {
   stdio: "inherit",
   shell: true,
-  env: { ...process.env },
+  env: { ...process.env, NODE_ENV: "production" },
 });
 
 function cleanup() {
