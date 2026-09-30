@@ -1,4 +1,3 @@
-import JSZip from 'jszip'
 import type { TimerConfig, TimerItem, CustomSound } from '../composables/useTimerSocket'
 
 /**
@@ -8,7 +7,7 @@ function dataUrlToBinary(dataUrl: string): { data: Uint8Array; mime: string; ext
   const parts = dataUrl.split(',')
   const mimeMatch = parts[0].match(/:(.*?);/)
   const mime = mimeMatch ? mimeMatch[1] : 'audio/mp3'
-  const binaryStr = atob(parts[1] || '')
+  const binaryStr = typeof atob !== 'undefined' ? atob(parts[1] || '') : Buffer.from(parts[1] || '', 'base64').toString('binary')
   const len = binaryStr.length
   const bytes = new Uint8Array(len)
   for (let i = 0; i < len; i++) {
@@ -29,6 +28,11 @@ function dataUrlToBinary(dataUrl: string): { data: Uint8Array; mime: string; ext
  */
 function binaryToDataUrl(bytes: Uint8Array, mime: string): Promise<string> {
   return new Promise((resolve, reject) => {
+    if (typeof FileReader === 'undefined') {
+      const base64 = Buffer.from(bytes).toString('base64')
+      resolve(`data:${mime};base64,${base64}`)
+      return
+    }
     const blob = new Blob([bytes], { type: mime })
     const reader = new FileReader()
     reader.onload = () => resolve(reader.result as string)
@@ -45,6 +49,10 @@ export async function exportPresetZip(
   timers?: TimerItem[],
   presetName?: string
 ): Promise<void> {
+  if (typeof window === 'undefined') return
+
+  const JSZipModule = await import('jszip')
+  const JSZip = JSZipModule.default || JSZipModule
   const zip = new JSZip()
   const customSounds: CustomSound[] = config.customSounds || config.sound?.customSounds || []
 
@@ -100,6 +108,12 @@ export async function exportPresetZip(
 export async function importPresetZip(
   file: File
 ): Promise<{ config: TimerConfig; timers?: TimerItem[] }> {
+  if (typeof window === 'undefined') {
+    throw new Error('ZIP import is only supported in browser client')
+  }
+
+  const JSZipModule = await import('jszip')
+  const JSZip = JSZipModule.default || JSZipModule
   const zip = await JSZip.loadAsync(file)
 
   const configFile = zip.file('config.json')
