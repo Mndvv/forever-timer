@@ -2,7 +2,8 @@
   "name": "forever-timer-backend",
   "type": "module",
   "scripts": {
-    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --target=bun --outfile=dist/server.js",
+    "start": "bun run dist/server.js",
     "dev": "bun --watch src/index.ts",
     "typecheck": "tsc"
   },

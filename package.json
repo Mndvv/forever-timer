@@ -9,6 +9,10 @@
     "dev": "bun --filter \"*\" dev",
     "dev:backend": "bun --filter forever-timer-backend dev",
     "dev:frontend": "bun --filter frontend dev",
-    "build:frontend": "bun --filter frontend build"
+    "build": "bun --filter forever-timer-backend build && bun --filter frontend build",
+    "build:backend": "bun --filter forever-timer-backend build",
+    "build:frontend": "bun --filter frontend build",
+    "start": "bun run scripts/start-prod.ts",
+    "start:prod": "bun run scripts/start-prod.ts"
   }
 }
